@@ -3,3 +3,4 @@ python-dotenv
 langchain
 langgraph
 langchain-google-genai
+pymysql
