@@ -23,7 +23,7 @@ def chat_route():
 def expenses():
     rows, _, _ = run("SELECT * FROM expenses ORDER BY id DESC LIMIT 20")
     for r in rows:
-        r["date"] = str(r["date"])   # 2026-10-25 instead of "Sun, 25 Oct 2026 00:00:00 GMT"
+        r["date"] = str(r["date"])  
     return jsonify(rows)
 
 
