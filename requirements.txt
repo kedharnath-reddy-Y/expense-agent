@@ -4,3 +4,4 @@ langchain
 langgraph
 langchain-google-genai
 pymysql
+langchain-groq

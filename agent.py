@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 
 load_dotenv()  # reads GOOGLE_API_KEY from the .env file
-
+from langchain.chat_models import init_chat_model
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import InMemorySaver
 from tools import ALL_TOOLS, CATEGORIES
@@ -14,11 +14,13 @@ SYSTEM_PROMPT = f"""You are a friendly personal expense tracker.
 - To delete an expense, find its id with list_expenses first.
 - Keep replies short."""
 
+model = init_chat_model("groq:openai/gpt-oss-120b", temperature=0)
+
 agent = create_agent(
-    model="google_genai:gemini-3.1-flash-lite",
+    model=model,            # was a string like "groq:..."
     tools=ALL_TOOLS,
     system_prompt=SYSTEM_PROMPT,
-    checkpointer=InMemorySaver(),  # remembers the conversation per thread_id
+    checkpointer=InMemorySaver(),
 )
 
 

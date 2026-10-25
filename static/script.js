@@ -13,8 +13,14 @@ function addMessage(text, who) {
 async function loadExpenses() {
   const res = await fetch("/expenses");
   const data = await res.json();
-  document.getElementById("rows").innerHTML = data.map(e =>
-    `<tr><td>${e.id}</td><td>${e.date}</td><td>${e.amount}</td><td>${e.category}</td><td>${e.description}</td></tr>`
+  document.getElementById("rows").innerHTML = data.map((e, i) =>
+    `<tr>
+      <td title="database id: ${e.id}">${i + 1}</td>
+      <td>${e.date}</td>
+      <td>${e.amount}</td>
+      <td>${e.category}</td>
+      <td>${e.description}</td>
+    </tr>`
   ).join("");
 }
 
@@ -32,7 +38,7 @@ document.getElementById("form").addEventListener("submit", async (ev) => {
   });
   const data = await res.json();
   thinking.textContent = data.reply;
-  loadExpenses();  // refresh the table after every message
+  loadExpenses(); 
 });
 
 loadExpenses();
