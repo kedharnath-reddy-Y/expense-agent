@@ -8,12 +8,19 @@
 </head>
 <body>
   <div class="wrap">
+
+    <div class="sidebar">
+      <button id="new-chat" type="button">+ New chat</button>
+      <div id="chats"></div>
+      <button id="report-btn" type="button" class="secondary">Spending report</button>
+    </div>
+
     <div class="panel">
       <h3>Chat</h3>
       <div id="messages"></div>
       <form id="form">
         <input id="input" placeholder="e.g. spent 250 on lunch" autocomplete="off">
-        <button>Send</button>
+        <button id="send">Send</button>
       </form>
     </div>
 
@@ -21,11 +28,12 @@
       <h3>Recent expenses</h3>
       <div class="table-box">
         <table>
-          <thead><tr><th>ID</th><th>Date</th><th>Rs.</th><th>Category</th><th>Note</th></tr></thead>
+          <thead><tr><th>#</th><th>Date</th><th>Rs.</th><th>Category</th><th>Note</th></tr></thead>
           <tbody id="rows"></tbody>
         </table>
       </div>
     </div>
+
   </div>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>

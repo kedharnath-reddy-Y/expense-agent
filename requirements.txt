@@ -2,6 +2,6 @@ flask
 python-dotenv
 langchain
 langgraph
-langchain-google-genai
-pymysql
 langchain-groq
+langgraph-checkpoint-sqlite
+pymysql
